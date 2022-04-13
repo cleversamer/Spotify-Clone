@@ -6,9 +6,9 @@ const slice = createSlice({
   initialState: {
     body: null,
     // Only while development process
-    token:
-      "BQBi9H3c0PAeO2Pu3F-ksyF0Jccc5VT2AAC1DNJW6TUkkJe41IWTQFUVwiFG0L-cZ65QjsYHegbqomfDwjXsfnfKAko_Cc9hCiHKRCh5n0MvRY9tJTcRhbKnWeNkZJCG8G04bIgpEwC9UUnwd3lkTYIuCGET1JPUff-BY7K9NjPiyvzHoPbL",
-    // token: null,
+    // token:
+    //   "BQBi9H3c0PAeO2Pu3F-ksyF0Jccc5VT2AAC1DNJW6TUkkJe41IWTQFUVwiFG0L-cZ65QjsYHegbqomfDwjXsfnfKAko_Cc9hCiHKRCh5n0MvRY9tJTcRhbKnWeNkZJCG8G04bIgpEwC9UUnwd3lkTYIuCGET1JPUff-BY7K9NjPiyvzHoPbL",
+    token: null,
   },
   reducers: {
     userAuthenticated: (user, action) => {
