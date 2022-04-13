@@ -1,0 +1,33 @@
+.song-row {
+  margin-left: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.song-row:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0.9;
+}
+
+.song-row__album {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.song-row__info {
+  margin-left: 20px;
+}
+
+.song-row__track-name {
+  font-size: 16px;
+}
+
+.song-row__track-text {
+  font-size: 12px;
+  margin-top: 3px;
+  color: #808080;
+}

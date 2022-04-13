@@ -3,10 +3,12 @@ import { createSelector } from "reselect";
 
 const slice = createSlice({
   name: "discoverWeekly",
-  initialState: [],
+  initialState: {
+    info: null,
+  },
   reducers: {
     discoverWeeklySet: (discoverWeekly, action) => {
-      discoverWeekly = action.payload.discoverWeekly;
+      discoverWeekly.info = action.payload.discoverWeekly;
     },
   },
 });
@@ -20,7 +22,7 @@ export const setDiscoverWeekly = (discoverWeekly) =>
 // Selectors
 export const selectDiscoverWeekly = createSelector(
   (state) => state.discoverWeekly,
-  (discoverWeekly) => discoverWeekly
+  (discoverWeekly) => discoverWeekly.info
 );
 
 export default slice.reducer;

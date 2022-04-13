@@ -4,5 +4,68 @@
   background: linear-gradient(#5b5773, #000);
   color: #fff;
   padding: 30px;
+  padding-right: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.body__info {
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+}
+
+.body__info-image {
+  height: 8vw;
+  margin-right: 20px;
+  box-shadow: 0 4px 60px #00000080;
+}
+
+.body__info-text {
+  flex: 1;
+  margin-bottom: 10px;
+}
+
+.body__info-playlist {
+  text-transform: uppercase;
+}
+
+.body__info-heading {
+  font-size: 36px;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.body__info-title {
+  font-size: 14px;
+}
+
+.body__songs {
+}
+
+.body__icons {
+  display: flex;
+  align-items: center;
+}
+
+.body__icon {
+  margin-right: 20px;
+}
+
+.body__icon--green {
+  color: #1ed15e !important;
+}
+
+.body__icon--shuffle {
+  font-size: 55px !important;
+  margin-left: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: #1ed15e !important;
+  transform: transform 0.1s ease-in;
+}
+
+.body__icon--shuffle:hover {
+  transform: scale(1.08);
 }
