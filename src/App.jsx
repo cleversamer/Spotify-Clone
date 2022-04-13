@@ -5,6 +5,7 @@ import { getTokenFromResponse } from "./spotify";
 import SpotifyWebApi from "spotify-web-api-js";
 import { authenticateUser, setToken, selectToken } from "./store/reducers/user";
 import { setSpotify } from "./store/reducers/spotify";
+import { setPlaylists } from "./store/reducers/playlists";
 import Login from "./pages/login";
 import Home from "./pages/home";
 import NotFound from "./pages/not-found";
@@ -22,10 +23,14 @@ const App = () => {
 
     if (_token) {
       spotify.setAccessToken(_token);
-      dispatch(setSpotify());
+
+      spotify.getUserPlaylists().then((playlists) => {
+        dispatch(setPlaylists(playlists.items));
+      });
+
       spotify.getMe().then((user) => dispatch(authenticateUser(user)));
+
       dispatch(setToken(_token));
-      console.log("token", _token);
     }
   }, []);
 

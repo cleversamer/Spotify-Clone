@@ -3,10 +3,12 @@ import { createSelector } from "reselect";
 
 const slice = createSlice({
   name: "playlists",
-  initialState: [],
+  initialState: {
+    list: [],
+  },
   reducers: {
     playlistsSet: (playlists, action) => {
-      playlists = action.payload.playlists;
+      playlists.list = action.payload.data;
     },
   },
 });
@@ -14,12 +16,12 @@ const slice = createSlice({
 const { playlistsSet } = slice.actions;
 
 // Action creators
-export const setPlaylists = (playlists) => playlistsSet({ playlists });
+export const setPlaylists = (playlists) => playlistsSet({ data: playlists });
 
 // Selectors
 export const selectPlaylists = createSelector(
-  (state) => state.playlists,
-  (playlists) => playlists
+  (state) => state.entities.playlists,
+  (playlists) => playlists.list
 );
 
 export default slice.reducer;

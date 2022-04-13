@@ -3,9 +3,9 @@ import "./index.css";
 
 const Body = () => {
   return (
-    <div>
+    <main className="body">
       <h1>Body</h1>
-    </div>
+    </main>
   );
 };
 
