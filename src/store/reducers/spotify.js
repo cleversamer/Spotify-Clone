@@ -6,6 +6,7 @@ const slice = createSlice({
   initialState: null,
   reducers: {
     spotifySet: (spotify, action) => {
+      console.log("spotify", action.payload.spotify);
       spotify = action.payload.spotify;
     },
   },

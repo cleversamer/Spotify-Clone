@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { getTokenFromResponse } from "./spotify";
 import SpotifyWebApi from "spotify-web-api-js";
+import { authenticateUser, setToken, selectToken } from "./store/reducers/user";
+import { setSpotify } from "./store/reducers/spotify";
 import Login from "./pages/login";
 import Home from "./pages/home";
 import NotFound from "./pages/not-found";
@@ -9,7 +12,8 @@ import NotFound from "./pages/not-found";
 const spotify = new SpotifyWebApi();
 
 const App = () => {
-  const [token, setToken] = useState(null);
+  const dispatch = useDispatch();
+  const token = useSelector(selectToken);
 
   useEffect(() => {
     const hash = getTokenFromResponse();
@@ -17,9 +21,11 @@ const App = () => {
     const _token = hash.access_token;
 
     if (_token) {
-      setToken(_token);
       spotify.setAccessToken(_token);
-      spotify.getMe().then((user) => console.log(user));
+      dispatch(setSpotify());
+      spotify.getMe().then((user) => dispatch(authenticateUser(user)));
+      dispatch(setToken(_token));
+      console.log("token", _token);
     }
   }, []);
 
@@ -28,14 +34,12 @@ const App = () => {
   }
 
   return (
-    <div className="app">
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/not-found" element={<NotFound />} />
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<Navigate to="/not-found" replace />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/not-found" element={<NotFound />} />
+      <Route path="/" element={<Home />} />
+      <Route path="*" element={<Navigate to="/not-found" replace />} />
+    </Routes>
   );
 };
 
