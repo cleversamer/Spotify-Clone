@@ -1,10 +1,8 @@
 .sidebar {
-  height: 100vh;
   flex: 0.2;
   background-color: #040404;
   color: #fff;
   min-width: 230px;
-  height: 100vh;
   padding: 0 10px;
   overflow-x: hidden;
   overflow-y: auto;
