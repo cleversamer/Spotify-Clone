@@ -8,10 +8,6 @@ import "./index.css";
 
 const store = configureStore();
 
-store.subscribe(() => {
-  console.log("State has changed!", store.getState());
-});
-
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
