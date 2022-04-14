@@ -4,7 +4,7 @@ Spotify clone with React & Firebase
 
 ## 🔴 Live Demo
 
-Not live yet...
+[Click here...](https://samer-spotify.firebaseapp.com)
 
 ## Description
 
@@ -17,6 +17,15 @@ Spotify clone with React & Firebase
 - React
 - React DOM
 - React Router DOM
+- React Redux
+- Reduxjs Toolkit
+- Redux
+- Redux Thunk
+- Reselect
+- MaterialUI Core
+- MaterialUI Icons
+- Spotify Wep API JS
+- Firebase
 
 ### Installing
 
