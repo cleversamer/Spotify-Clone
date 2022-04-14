@@ -11,12 +11,12 @@ const Header = () => {
   return (
     <div className="header">
       <div className="header__left">
-        <Search className="clickable" />
+        <Search className="header__icon clickable" />
 
         <input
           className="header__input"
           type="text"
-          placeholder="Search for artists, songs, or podcasts..."
+          placeholder="Search artists, songs, or podcasts..."
         />
       </div>
 
