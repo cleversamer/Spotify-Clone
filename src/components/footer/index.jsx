@@ -82,9 +82,9 @@ const Footer = () => {
 
       <div className="footer__right">
         <div className="footer__right-icons">
-          <PlaylistPlay className="clickable" />
+          <PlaylistPlay className="footer__icon clickable" />
 
-          <VolumeDown className="clickable" />
+          <VolumeDown className="footer__icon footer__right-icon clickable" />
         </div>
 
         <Slider

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/reducers/user";
 import { invertOpenedList } from "../../store/reducers/openedList";
@@ -9,6 +9,12 @@ import "./index.css";
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const [input, setInput] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setInput("");
+  };
 
   return (
     <div className="header">
@@ -18,15 +24,17 @@ const Header = () => {
           onClick={() => dispatch(invertOpenedList())}
         />
 
-        <div className="header__left-right">
+        <form className="header__left-right" onSubmit={handleSubmit}>
           <Search className="header__icon clickable" />
 
           <input
             className="header__input"
             type="text"
             placeholder="Search artists, songs, or podcasts..."
+            value={input}
+            onChange={(e) => setInput(e.currentTarget.value)}
           />
-        </div>
+        </form>
       </div>
 
       <div className="header__right">

@@ -71,6 +71,14 @@
   padding-right: 20px;
 }
 
+.footer__right-icons {
+  display: flex;
+}
+
+.footer__right-icon {
+  margin: 0 10px;
+}
+
 .footer__slider {
   color: #1ed15e !important;
 }
