@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   playSong,
@@ -24,6 +24,14 @@ const Footer = () => {
   const song = useSelector(selectSong);
   const isPlaying = useSelector(selectPlaying);
   const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (isPlaying) {
+      handlePlaySong();
+    } else {
+      handlePauseSong();
+    }
+  }, [song, isPlaying]);
 
   const handlePlaySong = () => {
     dispatch(playSong());

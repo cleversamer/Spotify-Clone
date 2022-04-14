@@ -1,14 +1,37 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectDiscoverWeekly } from "../../store/reducers/discoverWeekly";
-import { PlayCircleFilled, Favorite, MoreHoriz } from "@mui/icons-material";
+import { setPlaying, playSong, pauseSong } from "../../store/reducers/playing";
+import {
+  PlayCircleFilled,
+  PauseCircleFilled,
+  Favorite,
+  MoreHoriz,
+} from "@mui/icons-material";
 import Header from "../header";
 import SongRow from "../song-row/";
 import "./index.css";
 
 const Body = ({ spotify }) => {
+  const dispatch = useDispatch();
   const discoverWeekly = useSelector(selectDiscoverWeekly);
   const [liked, setLiked] = useState(false);
+  const [randomTrackPlaying, setRandomTrackPlaying] = useState(false);
+
+  const handlePlay = () => {
+    const rndIndex = Math.floor(
+      Math.random() * discoverWeekly?.tracks.items.length
+    );
+    const rndTrack = discoverWeekly?.tracks.items[rndIndex]?.track;
+    dispatch(setPlaying(rndTrack));
+    dispatch(playSong());
+    setRandomTrackPlaying(true);
+  };
+
+  const handlePause = () => {
+    dispatch(pauseSong());
+    setRandomTrackPlaying(false);
+  };
 
   return (
     <main className="body">
@@ -32,7 +55,17 @@ const Body = ({ spotify }) => {
 
       <div className="body__songs">
         <div className="body__icons">
-          <PlayCircleFilled className="body__icon body__icon--big body__icon--shuffle clickable" />
+          {randomTrackPlaying ? (
+            <PauseCircleFilled
+              className="body__icon body__icon--big body__icon--shuffle clickable"
+              onClick={handlePause}
+            />
+          ) : (
+            <PlayCircleFilled
+              className="body__icon body__icon--big body__icon--shuffle clickable"
+              onClick={handlePlay}
+            />
+          )}
 
           <Favorite
             fontSize="large"
