@@ -17,6 +17,7 @@
 
 .body__info-image {
   height: 8vw;
+  min-height: 120px;
   margin-right: 20px;
   box-shadow: 0 4px 60px #00000080;
 }
@@ -40,9 +41,6 @@
   font-size: 14px;
 }
 
-.body__songs {
-}
-
 .body__icons {
   display: flex;
   align-items: center;
@@ -52,8 +50,8 @@
   margin-right: 20px;
 }
 
-.body__icon--green {
-  color: #1ed15e !important;
+.body__icon--red {
+  color: #ff6347 !important;
 }
 
 .body__icon--shuffle {
@@ -82,5 +80,81 @@
 
   .body__info-image {
     height: 20vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .body__info-image {
+    height: 25vw;
+  }
+
+  .body__info-playlist {
+    font-size: 13px;
+  }
+
+  .body__info-heading {
+    font-size: 30px;
+  }
+
+  .body__info-title {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .body__icon {
+    margin-right: 10px;
+  }
+
+  .body__icon--big {
+    font-size: 40px !important;
+  }
+
+  .body__icon--medium {
+    font-size: 30px !important;
+  }
+
+  .body__icon--small {
+    /*  */
+  }
+
+  .body {
+    padding-left: 10px;
+  }
+
+  .body__info-playlist {
+    font-size: 10px;
+  }
+
+  .body__info-heading {
+    font-size: 22px;
+  }
+
+  .body__info-title {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .body__info-text {
+    margin: 0;
+  }
+
+  .body__info-image {
+    min-height: 0;
+    height: 80px;
+  }
+
+  .body__info-playlist {
+    font-size: 9px;
+  }
+
+  .body__info-heading {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  .body__info-title {
+    font-size: 9px;
   }
 }

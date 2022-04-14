@@ -24,10 +24,36 @@
 
 .song-row__track-name {
   font-size: 16px;
+  font-weight: 600;
 }
 
 .song-row__track-text {
   font-size: 12px;
   margin-top: 3px;
   color: #808080;
+}
+
+@media screen and (max-width: 420px) {
+  .song-row {
+    padding: 10px;
+    margin: 0;
+  }
+
+  .song-row__track-name {
+    font-size: 15px;
+  }
+
+  .song-row__track-text {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .song-row__track-name {
+    font-size: 13px;
+  }
+
+  .song-row__track-text {
+    font-size: 10px;
+  }
 }

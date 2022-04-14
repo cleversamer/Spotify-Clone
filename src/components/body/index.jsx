@@ -32,17 +32,17 @@ const Body = ({ spotify }) => {
 
       <div className="body__songs">
         <div className="body__icons">
-          <PlayCircleFilled className="body__icon body__icon--shuffle clickable" />
+          <PlayCircleFilled className="body__icon body__icon--big body__icon--shuffle clickable" />
 
           <Favorite
             fontSize="large"
-            className={`body__icon clickable${
-              liked ? " body__icon--green" : ""
+            className={`body__icon body__icon--medium clickable${
+              liked ? " body__icon--red" : ""
             }`}
             onClick={() => setLiked(!liked)}
           />
 
-          <MoreHoriz className="body__icon clickable" />
+          <MoreHoriz className="body__icon body__icon--small clickable" />
         </div>
 
         {discoverWeekly?.tracks.items.map((item) => (
