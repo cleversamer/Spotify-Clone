@@ -5,6 +5,7 @@ import playing from "./reducers/playing";
 import item from "./reducers/item";
 import spotify from "./reducers/spotify";
 import discoverWeekly from "./reducers/discoverWeekly";
+import openedList from "./reducers/openedList";
 
 export default combineReducers({
   entities,
@@ -13,4 +14,5 @@ export default combineReducers({
   item,
   playing,
   discoverWeekly,
+  openedList,
 });

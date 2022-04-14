@@ -73,13 +73,23 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .body {
     flex: 1;
   }
 
   .body__info-image {
     height: 20vw;
+  }
+
+  .player__content--body > .body {
+    display: block;
+    flex: 1;
+  }
+
+  .player__content--sidebar > .body {
+    display: none;
+    flex: 0;
   }
 }
 
@@ -112,10 +122,6 @@
 
   .body__icon--medium {
     font-size: 30px !important;
-  }
-
-  .body__icon--small {
-    /*  */
   }
 
   .body {

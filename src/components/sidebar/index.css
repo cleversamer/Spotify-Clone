@@ -8,6 +8,16 @@
   overflow-y: auto;
 }
 
+.sidebar__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar__top-icon {
+  display: none !important;
+}
+
 .sidebar__logo {
   height: 70px;
   padding: 10px;
@@ -55,9 +65,23 @@ hr {
   font-weight: 400;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .sidebar {
     display: none;
     flex: 0;
+  }
+
+  .sidebar__top-icon {
+    display: block !important;
+  }
+
+  .player__content--body > .sidebar {
+    display: none;
+    flex: 0;
+  }
+
+  .player__content--sidebar > .sidebar {
+    display: block;
+    flex: 1;
   }
 }

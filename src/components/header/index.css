@@ -5,13 +5,25 @@
 }
 
 .header__left {
+  flex: 0.5;
+  display: flex;
+  align-items: center;
+}
+
+.header__left-icon {
+  display: none !important;
+  font-size: 40px !important;
+  margin-right: 10px;
+}
+
+.header__left-right {
+  flex: 1;
   display: flex;
   align-items: center;
   background-color: #fff;
   color: #808080;
   border-radius: 30px;
   padding: 10px;
-  flex: 0.5;
   min-width: 70px;
 }
 
@@ -48,6 +60,18 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .header__left-icon {
+    display: block !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header__left-icon {
+    font-size: 35px !important;
+  }
+}
+
 @media screen and (max-width: 520px) {
   .header__input::placeholder {
     font-size: 12px;
@@ -55,8 +79,12 @@
 }
 
 @media screen and (max-width: 480px) {
+  .header__left-icon {
+    font-size: 28px !important;
+  }
+
   .header__left {
-    flex: 0.95;
+    flex: 0.98;
     padding: 5px;
   }
 
@@ -78,6 +106,10 @@
 }
 
 @media screen and (max-width: 380px) {
+  .header__left-icon {
+    font-size: 24px !important;
+  }
+
   .header__input::placeholder {
     font-size: 9px;
   }

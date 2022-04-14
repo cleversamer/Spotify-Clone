@@ -1,19 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectPlaylists } from "../../store/reducers/playlists";
-import { Home, Search, LibraryMusic } from "@mui/icons-material";
+import { invertOpenedList } from "../../store/reducers/openedList";
+import { Close, Home, Search, LibraryMusic } from "@mui/icons-material";
 import SidebarOption from "./SidebarOption";
 import "./index.css";
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
   const playlists = useSelector(selectPlaylists);
 
   return (
     <aside className="sidebar">
-      <Link to="/">
-        <img className="sidebar__logo" src="img/logo.jpg" alt="Spotify logo" />
-      </Link>
+      <div className="sidebar__top">
+        <Link to="/">
+          <img
+            className="sidebar__logo"
+            src="img/logo.jpg"
+            alt="Spotify logo"
+          />
+        </Link>
+
+        <Close
+          fontSize="large"
+          className="sidebar__top-icon clickable"
+          onClick={() => dispatch(invertOpenedList())}
+        />
+      </div>
 
       <SidebarOption Icon={Home} title="Home" />
 
