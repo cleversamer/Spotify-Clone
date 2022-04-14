@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   playSong,
@@ -6,7 +6,7 @@ import {
   selectSong,
   selectPlaying,
 } from "../../store/reducers/playing";
-import { Grid, Slider } from "@mui/material";
+import { Slider } from "@mui/material";
 import {
   PlayCircleOutline,
   PauseCircleOutline,
@@ -23,9 +23,22 @@ const Footer = () => {
   const dispatch = useDispatch();
   const song = useSelector(selectSong);
   const isPlaying = useSelector(selectPlaying);
+  const audioRef = useRef(null);
+
+  const handlePlaySong = () => {
+    dispatch(playSong());
+    audioRef?.current?.play();
+  };
+
+  const handlePauseSong = () => {
+    dispatch(pauseSong());
+    audioRef?.current?.pause();
+  };
 
   return (
     <footer className="footer">
+      <audio src={song?.preview_url} ref={audioRef} />
+
       <div className="footer__left">
         <img
           className="footer__album-cover clickable"
@@ -52,13 +65,13 @@ const Footer = () => {
           <PauseCircleOutline
             fontSize="large"
             className="footer__icon footer__icon--big clickable"
-            onClick={() => dispatch(pauseSong())}
+            onClick={handlePauseSong}
           />
         ) : (
           <PlayCircleOutline
             fontSize="large"
             className="footer__icon footer__icon--big clickable"
-            onClick={() => dispatch(playSong())}
+            onClick={handlePlaySong}
           />
         )}
 
