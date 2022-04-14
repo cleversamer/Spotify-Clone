@@ -68,3 +68,19 @@
 .body__icon--shuffle:hover {
   transform: scale(1.08);
 }
+
+@media screen and (max-width: 1080px) {
+  .body__info-image {
+    height: 15vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .body {
+    flex: 1;
+  }
+
+  .body__info-image {
+    height: 20vw;
+  }
+}

@@ -3,23 +3,44 @@ import { createSelector } from "reselect";
 
 const slice = createSlice({
   name: "playing",
-  initialState: false,
+  initialState: {
+    song: null,
+    isPlaying: false,
+  },
   reducers: {
     playingSet: (playing, action) => {
-      playing = action.payload.playing;
+      playing.song = action.payload.playing;
+      playing.isPlaying = false;
+    },
+
+    songPlayed: (playing, action) => {
+      playing.isPlaying = true;
+    },
+
+    songPaused: (playing, action) => {
+      playing.isPlaying = false;
     },
   },
 });
 
-const { playingSet } = slice.actions;
+const { playingSet, songPlayed, songPaused } = slice.actions;
 
 // Action creators
-export const setPlaying = (user) => playingSet({ user });
+export const setPlaying = (playing) => playingSet({ playing });
+
+export const playSong = () => songPlayed();
+
+export const pauseSong = () => songPaused();
 
 // Selectors
+export const selectSong = createSelector(
+  (state) => state.playing,
+  (playing) => playing.song
+);
+
 export const selectPlaying = createSelector(
   (state) => state.playing,
-  (playing) => playing
+  (playing) => playing.isPlaying
 );
 
 export default slice.reducer;

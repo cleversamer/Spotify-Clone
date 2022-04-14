@@ -35,3 +35,15 @@
 .header__username:hover {
   color: #1ed15e;
 }
+
+@media screen and (max-width: 1080px) {
+  .header__left {
+    flex: 0.6;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .header__left {
+    flex: 0.85;
+  }
+}

@@ -1,7 +1,15 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  playSong,
+  pauseSong,
+  selectSong,
+  selectPlaying,
+} from "../../store/reducers/playing";
 import { Grid, Slider } from "@mui/material";
 import {
   PlayCircleOutline,
+  PauseCircleOutline,
   SkipPrevious,
   SkipNext,
   Shuffle,
@@ -12,51 +20,66 @@ import {
 import "./index.css";
 
 const Footer = () => {
+  const dispatch = useDispatch();
+  const song = useSelector(selectSong);
+  const isPlaying = useSelector(selectPlaying);
+
   return (
     <footer className="footer">
       <div className="footer__left">
         <img
           className="footer__album-cover clickable"
-          src="https://avatars.githubusercontent.com/u/73291969?v=4"
-          alt="Album cover"
+          src={song?.album?.images[0]?.url || "img/unknown-album.jpg"}
+          alt={song?.album?.name || "Album cover"}
         />
 
         <div className="footer__song-info">
-          <h4 className="footer__song-title">Yeah!</h4>
-          <p className="footer__singer">Usher</p>
+          <h4 className="footer__song-title">{song?.name || "Unknown song"}</h4>
+
+          <p className="footer__singer">
+            {song?.artists?.map((artist) => artist.name).join(", ") ||
+              "Unknown artist"}
+          </p>
         </div>
       </div>
 
       <div className="footer__center">
         <Shuffle className="footer__icon footer__icon--green clickable" />
+
         <SkipPrevious className="footer__icon clickable" />
-        <PlayCircleOutline
-          fontSize="large"
-          className="footer__icon clickable"
-        />
+
+        {isPlaying ? (
+          <PauseCircleOutline
+            fontSize="large"
+            className="footer__icon footer__icon--big clickable"
+            onClick={() => dispatch(pauseSong())}
+          />
+        ) : (
+          <PlayCircleOutline
+            fontSize="large"
+            className="footer__icon footer__icon--big clickable"
+            onClick={() => dispatch(playSong())}
+          />
+        )}
+
         <SkipNext className="footer__icon clickable" />
+
         <Repeat className="footer__icon footer__icon--green clickable" />
       </div>
 
       <div className="footer__right">
-        <Grid container spacing={2}>
-          <Grid item>
-            <PlaylistPlay className="clickable" />
-          </Grid>
+        <div className="footer__right-icons">
+          <PlaylistPlay className="clickable" />
 
-          <Grid item>
-            <VolumeDown className="clickable" />
-          </Grid>
+          <VolumeDown className="clickable" />
+        </div>
 
-          <Grid item xs>
-            <Slider
-              className="footer__slider clickable"
-              defaultValue={80}
-              valueLabelDisplay="auto"
-              step={5}
-            />
-          </Grid>
-        </Grid>
+        <Slider
+          className="footer__slider clickable"
+          defaultValue={80}
+          valueLabelDisplay="auto"
+          step={5}
+        />
       </div>
     </footer>
   );

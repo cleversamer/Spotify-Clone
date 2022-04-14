@@ -1,9 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setPlaying } from "../../store/reducers/playing";
 import "./index.css";
 
 const SongRow = ({ track }) => {
+  const dispatch = useDispatch();
+
+  const handleClick = () => dispatch(setPlaying(track));
+
   return (
-    <article className="song-row clickable">
+    <article className="song-row clickable" onClick={handleClick}>
       <img
         className="song-row__album"
         src={track?.album?.images[0]?.url}
