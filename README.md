@@ -41,7 +41,7 @@ Spotify clone with React & Firebase
 
 ## Authors
 
-- [Samer A.](https://twitter.com/ssadawi__)
+Authored by [Samer A.](https://cleversamer.web.app/)
 
 ## Version History
 
